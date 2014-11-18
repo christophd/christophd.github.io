@@ -4,9 +4,10 @@
 /***********************/
 
 .highlight { 
-  background-color: $darkerGray;
+  background-color: #FAFAFA;
   padding: 5px 10px;
   margin: 20px 0;
+  border: 1px solid #DDDDDD;
 }
 
 .highlight pre {
@@ -17,7 +18,7 @@
  
 code {
   font-family: 'Courier', monospace;
-  font-size: 14px;
+  font-size: 12px;
   color: #999
 }
  
