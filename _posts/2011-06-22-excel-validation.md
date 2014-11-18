@@ -7,7 +7,7 @@ Lately I had to deal with Excel files as REST Http service response. I came up w
 
 First of all lets have a closer look at the response message we get from REST Http service.
 
-{% highlight %}
+{% highlight xml %}
 HTTP/1.1 200 OK
 Content-Language: de-DE
 Content-Type: application/vnd.ms-excel;charset=windows-1252
