@@ -47,11 +47,11 @@ Citrus as integration test framework works best with Maven. You can setup a Citr
 <dependency>
   <groupId>org.apache.xbean</groupId>
   <artifactId>xbean-spring</artifactId>
-  <version>3.18</version>
+  <version>${xbean.version}</version>
 </dependency>
 {% endhighlight %}
 
-We need to add the ActiveMQ Maven dependencies to our Citrus project. This is done in the Maven POM _pom.xml_ file. Once we have this we can add the message broker to the Citrus configuration. We add a new Spring application context file _citrus-activemnq-context.xml_ in _src/citrus/resources_ folder.
+We need to add the ActiveMQ Maven dependencies to our Citrus project. This is done in the Maven POM _pom.xml_ file. Once we have this we can add the message broker to the Citrus configuration. We add a new Spring application context file _citrus-activemq-context.xml_ in _src/citrus/resources_ folder.
 
 {% highlight xml %}
 <?xml version="1.0" encoding="UTF-8"?>
