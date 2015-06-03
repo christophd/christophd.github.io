@@ -3,7 +3,7 @@ layout: post
 title: Apache Camel Integration Testing - Part 3
 ---
 
-In this post I will continue with the Apache Camel integration testing scenario that we have built up in
+In this post I will continue with the Apache Camel integration testing scenario that we have worked on in
 <a href="http://christophd.github.io/camel-testing-part-1/" title="Part 1" target="_blank">part one</a> and
 <a href="http://christophd.github.io/camel-testing-part-2/" title="Part 2" target="_blank">part two</a> of this series.
 This time we focus on exception handling in Camel routes. First of all let's add exception handling to our Camel route.
