@@ -93,7 +93,7 @@ public class SayHelloTest extends TestNGCitrusTestBuilder {
             .messageType(MessageType.PLAINTEXT)
             .payload("Something went wrong!")
             .header("CamelExceptionCaught",
-                    "com.consol.citrus.exceptions.CitrusRuntimeException: Something went wrong!");
+                "com.consol.citrus.exceptions.CitrusRuntimeException: Something went wrong!");
 
         send(sedaErrorHandlingEndpoint)
             .messageType(MessageType.PLAINTEXT)
@@ -113,8 +113,10 @@ Instead of responding with a usual plain text message we add special header valu
 send(sedaHelloEndpoint)
     .messageType(MessageType.PLAINTEXT)
     .payload("Something went wrong!")
-    .header("citrus_camel_exchange_exception", "com.consol.citrus.exceptions.CitrusRuntimeException")
-    .header("citrus_camel_exchange_exception_message", "Something went wrong!");
+    .header("citrus_camel_exchange_exception",
+            "com.consol.citrus.exceptions.CitrusRuntimeException")
+    .header("citrus_camel_exchange_exception_message",
+            "Something went wrong!");
 {% endhighlight %}
 
 These special Citrus headers instruct the Citrus Camel endpoint to raise an exception. We are able to specify the exception type as well as the exception message. As a result
@@ -127,7 +129,7 @@ receive(sedaErrorHandlingEndpoint)
     .messageType(MessageType.PLAINTEXT)
     .payload("Something went wrong!")
     .header("CamelExceptionCaught",
-            "com.consol.citrus.exceptions.CitrusRuntimeException: Something went wrong!");
+        "com.consol.citrus.exceptions.CitrusRuntimeException: Something went wrong!");
 {% endhighlight %}
 
 With this receive action on the error endpoint we intend to validate that the exception handling was done as expected. We are able to check the error message payload and in addition
