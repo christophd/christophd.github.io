@@ -143,5 +143,5 @@ This completes this simple test scenario. We raised an exception and forced the 
 response message which is used as final result of the Camel route.
 
 Error handling in message based enterprise integration scenarios is complex. We need to deal with delivery timeouts, retry strategies and proper transaction handling. This post only showed the top of the iceberg but I hope
-you got the idea of how to set up automated integration tests with Apache Camel routes. The Citrus framework is focused on providing real message endpoints no matter of what kind or nature (Http, JMS, REST, SOAP, Ftp, XML, JSON,
+you got the idea of how to set up automated integration tests with Apache Camel routes. The <a href="http://www.citrusframework.org" title="Citrus framework" target="_blank">Citrus framework</a> is focused on providing real message endpoints no matter of what kind or nature (Http, JMS, REST, SOAP, Ftp, XML, JSON,
 Seda and so on). What we get is automated integration testing with real messages being exchanged on different transports and endpoints.
