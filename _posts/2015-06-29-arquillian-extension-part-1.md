@@ -34,10 +34,11 @@ Lets have a look at this with a small example:
 The extension configuration is placed in the basic Arquillian descriptor called __arquillian.xml__. We use the _citrus_ qualifier so the settings are automatically loaded with the Citrus extension.
 
 For now the possible extension settings are:
-* citrusVersion: The explicit version of Citrus that should be used. Be sure to have the same library version available in your project (e.g. as Maven dependency). This property is optional. By default the extension just uses the latest stable version.
-* autoPackage: When true (default setting) the extension will automatically add Citrus libraries and all transitive dependencies to the test deployment. This automatically enables you to use the Citrus API inside the Arquillian test even when the test is executed inside the application container.
-* suiteName: This optional setting defines the name of the test suite that is used for the Citrus test run. When using before/after suite functionality in Citrus this setting might be of interest.
-* configurationClass: Full qualified Java class name of customized Citrus Spring bean configuration to use when loading the Citrus Spring application context. As a user you can define a custom Citrus configuration with this optional setting.
+
+* __citrusVersion:__ The explicit version of Citrus that should be used. Be sure to have the same library version available in your project (e.g. as Maven dependency). This property is optional. By default the extension just uses the latest stable version.
+* __autoPackage:__ When true (default setting) the extension will automatically add Citrus libraries and all transitive dependencies to the test deployment. This automatically enables you to use the Citrus API inside the Arquillian test even when the test is executed inside the application container.
+* __suiteName:__ This optional setting defines the name of the test suite that is used for the Citrus test run. When using before/after suite functionality in Citrus this setting might be of interest.
+* __configurationClass:__ Full qualified Java class name of customized Citrus Spring bean configuration to use when loading the Citrus Spring application context. As a user you can define a custom Citrus configuration with this optional setting.
 
 So we also need to add the Citrus Maven dependency to our project:
 
