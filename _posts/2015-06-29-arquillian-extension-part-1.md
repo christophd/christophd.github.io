@@ -66,7 +66,8 @@ add these modules each separately to your Maven POM, too. For now we want to use
 </dependency>
 {% endhighlight %}
 
-Now we are ready to integrate Citrus in a first Arquillian test case:
+Now we are ready to integrate Citrus in a first Arquillian test case. As an example service we are using a simple REST service. The service is called __employee registry__ and provides a REST interface for adding, listing, updating and deleting employees in a registry.
+The employee REST resource uses the usual Http methods GET, UPDATE, DELETE, PUT for managing the employee entries. Lets call the service via Http and add a new employee to the registry.:
 
 {% highlight java %}
 @RunWith(Arquillian.class)
@@ -93,11 +94,9 @@ public class EmployeeResourceTest {
         serviceUri = new URL(baseUri, "registry/employee").toExternalForm();
     }
 
-    /**
-    * Test adding new employees and getting list of all employees.
-    */
     @Test
-    public void testCreateEmployeeAndGet(@CitrusTest CitrusTestBuilder citrus) {
+    @CitrusTest
+    public void testCreateEmployeeAndGet(@CitrusResource TestDesigner citrus) {
         citrus.send(serviceUri)
             .message(new HttpMessage("name=Penny&age=20")
             .method(HttpMethod.POST)
@@ -121,7 +120,7 @@ public class EmployeeResourceTest {
             "</employees>")
         .statusCode(HttpStatus.OK));
 
-        citrusFramework.run(citrus.build());
+        citrusFramework.run(citrus.getTestCase());
     }
 }
 {% endhighlight %}
@@ -132,9 +131,9 @@ framework instance is automatically loaded and configured with all necessary set
 we can build the deployment archive with our server resources that we need to test and we have access to __@ArquillianResource__ annotated
 resources such as the REST service endpoint URI of our application.
 
-The test method itself is provided with a __@CitrusTest__ annotated method parameter that represents the Citrus execution test builder. This is a Java DSL representation
-of what Citrus has to offer when it comes to sending and receiving messages over various message transports. The Citrus Arquillian extension will automatically inject
-this method parameter so we can use it inside the test method block in order to define the Citrus test logic.
+The test method itself is provided with a __@CitrusTest__ annotation marking the test as aware of Citrus. In combination with that we use the __@CitrusResource__
+annotated method parameter that represents the Citrus test designer. This is a Java DSL representation of what Citrus has to offer when it comes to sending and receiving messages over various message transports.
+The Citrus Arquillian extension will automatically inject this method parameter so we can use it inside the test method block in order to define the Citrus test logic.
 
 Basically we invoke the deployed REST service with Citrus using the Java DSL _send_ and _receive_ methods. Each receive operation in Citrus also triggers the message validation mechanism. This includes
 a syntax check in case of SOAP and XML messages with a WSDL or XSD given and a semantic check on received message body and header values. The tester is able to give an expected message template that is used
