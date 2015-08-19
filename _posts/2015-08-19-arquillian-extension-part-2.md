@@ -94,7 +94,7 @@ Now in our test scenario we need a valid SMTP mail server on host __localhost__ 
 <dependency>
   <groupId>com.consol.citrus</groupId>
   <artifactId>citrus-mail</artifactId>
-  <version>2.2</version>
+  <version>2.3</version>
 </dependency>
 {% endhighlight %}
 
@@ -103,7 +103,7 @@ load our new configuration:
 
 {% highlight xml %}
 <extension qualifier="citrus">
-  <property name="citrusVersion">2.2</property>
+  <property name="citrusVersion">2.3</property>
   <property name="autoPackage">true</property>
   <property name="suiteName">citrus-arquillian-suite</property>
   <property name="configurationClass">com.consol.citrus.samples.javaee.config.CitrusConfig</property>

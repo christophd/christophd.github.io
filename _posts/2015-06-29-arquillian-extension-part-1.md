@@ -25,7 +25,7 @@ Lets have a look at this with a small example:
 
 {% highlight xml %}
 <extension qualifier="citrus">
-  <property name="citrusVersion">2.2</property>
+  <property name="citrusVersion">2.3</property>
   <property name="autoPackage">true</property>
   <property name="suiteName">citrus-arquillian-suite</property>
 </extension>
