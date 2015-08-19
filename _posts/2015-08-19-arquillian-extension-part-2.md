@@ -3,9 +3,9 @@ layout: post
 title: Arquillian & Citrus in combination - Part 2
 ---
 
-Some time has passed and we have made some improvements on the Citrus Arquillian extension. So we have things to look forward to in this post as we include some Citrus mail server within our test.
-In <a href="http://christophd.github.io/arquillian-extension-part-1/" title="Part 1" target="_blank">part one</a> of this series we have already combined both frameworks <a href="http://arquillian.org/" title="Arquillian" target="_blank">Arquillian</a>
-and <a href="http://www.citrusframework.org" title="Citrus framework" target="_blank">Citrus</a> with a basic example. Now we want to move on with a more complex test scenario.
+Some time has passed since <a href="http://christophd.github.io/arquillian-extension-part-1/" title="Part 1" target="_blank">part one</a> of this blog post series and we have made some improvements on the Citrus Arquillian extension.
+So we can look forward to this post as we move on with a more complex test scenario where we include some Citrus mail server within our test. In part one we have already combined both frameworks <a href="http://arquillian.org/" title="Arquillian" target="_blank">Arquillian</a>
+and <a href="http://www.citrusframework.org" title="Citrus framework" target="_blank">Citrus</a> with a basic example.
 
 Let me recap first what we have so far. Citrus is part of the Arquillian test execution and we are able to call our employee REST JEE service which is deployed in an embedded Wildfly application server.
 Arquillian takes care on the test deployment and provides resources such as the endpoint URL to call. In our first test we called the employee service adding new employees and getting the complete list of all employees via REST.
