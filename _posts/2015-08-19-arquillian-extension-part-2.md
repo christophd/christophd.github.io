@@ -22,20 +22,20 @@ public class EmployeeRepository {
    private MailSessionBean mailSessionBean;
 
    public EmployeeRepository() {
-      employees = new Employees();
+       employees = new Employees();
    }
 
    public void addEmployee(Employee e) {
-      employees.getEmployees().add(e);
+       employees.getEmployees().add(e);
 
-      if (e.getEmail() != null && e.getEmail().length() > 0) {
+       if (e.getEmail() != null && e.getEmail().length() > 0) {
          mailSessionBean.sendMail(e.getEmail(), "Welcome new employee",
-                 String.format("We welcome you '%s' to our company - now get to work!", e.getName()));
-      }
+           String.format("We welcome you '%s' to our company - now get to work!", e.getName()));
+       }
    }
 
    public Employees getEmployees() {
-      return employees;
+       return employees;
    }
 }
 {% endhighlight %}
@@ -56,12 +56,6 @@ public class MailSessionBean {
     private String username = "employee-registry@example.com";
     private String password = "secretpw";
 
-    /**
-     * Send mail via SMTP connection.
-     * @param to
-     * @param subject
-     * @param body
-     */
     public void sendMail(String to, String subject, String body) {
         Properties props = new Properties();
         props.put("mail.smtp.host", host);
@@ -112,7 +106,7 @@ load our new configuration:
   <property name="citrusVersion">2.2</property>
   <property name="autoPackage">true</property>
   <property name="suiteName">citrus-arquillian-suite</property>
-  __<property name="configurationClass">com.consol.citrus.samples.javaee.config.CitrusConfig</property>__
+  <property name="configurationClass">com.consol.citrus.samples.javaee.config.CitrusConfig</property>
 </extension>
 {% endhighlight %}
 
@@ -160,9 +154,9 @@ public class EmployeeMailTest {
     @Deployment(testable = false)
     public static WebArchive createDeployment() {
         return ShrinkWrap.create(WebArchive.class)
-                .addClasses(
-                        RegistryApplication.class, MailSessionBean.class, EmployeeResource.class, Employees.class,
-                        Employee.class, EmployeeRepository.class);
+            .addClasses(
+                RegistryApplication.class, MailSessionBean.class, EmployeeResource.class,
+                Employees.class, Employee.class, EmployeeRepository.class);
     }
 
     @Before
@@ -174,46 +168,46 @@ public class EmployeeMailTest {
     @CitrusTest
     public void testPostWithWelcomeEmail(@CitrusResource TestDesigner citrus) {
         citrus.send(serviceUri)
-                .fork(true)
-                .message(new HttpMessage("name=Rajesh&age=20&email=rajesh@example.com")
-                        .method(HttpMethod.POST)
-                        .contentType(MediaType.APPLICATION_FORM_URLENCODED));
+            .fork(true)
+            .message(new HttpMessage("name=Rajesh&age=20&email=rajesh@example.com")
+                    .method(HttpMethod.POST)
+                    .contentType(MediaType.APPLICATION_FORM_URLENCODED));
 
         citrus.receive(mailServer)
-                .payload("<mail-message xmlns=\"http://www.citrusframework.org/schema/mail/message\">" +
-                            "<from>employee-registry@example.com</from>" +
-                            "<to>rajesh@example.com</to>" +
-                            "<cc></cc>" +
-                            "<bcc></bcc>" +
-                            "<subject>Welcome new employee</subject>" +
-                            "<body>" +
-                                "<contentType>text/plain; charset=us-ascii</contentType>" +
-                                "<content>We welcome you 'Rajesh' to our company - now get to work!</content>" +
-                            "</body>" +
-                        "</mail-message>")
-                .header(CitrusMailMessageHeaders.MAIL_SUBJECT, "Welcome new employee")
-                .header(CitrusMailMessageHeaders.MAIL_FROM, "employee-registry@example.com")
-                .header(CitrusMailMessageHeaders.MAIL_TO, "rajesh@example.com");
+            .payload("<mail-message xmlns=\"http://www.citrusframework.org/schema/mail/message\">" +
+                    "<from>employee-registry@example.com</from>" +
+                    "<to>rajesh@example.com</to>" +
+                    "<cc></cc>" +
+                    "<bcc></bcc>" +
+                    "<subject>Welcome new employee</subject>" +
+                    "<body>" +
+                      "<contentType>text/plain; charset=us-ascii</contentType>" +
+                      "<content>We welcome you 'Rajesh' to our company - now get to work!</content>" +
+                    "</body>" +
+                "</mail-message>")
+            .header(CitrusMailMessageHeaders.MAIL_SUBJECT, "Welcome new employee")
+            .header(CitrusMailMessageHeaders.MAIL_FROM, "employee-registry@example.com")
+            .header(CitrusMailMessageHeaders.MAIL_TO, "rajesh@example.com");
 
         citrus.receive(serviceUri)
-                .message(new HttpMessage()
-                        .statusCode(HttpStatus.NO_CONTENT));
+            .message(new HttpMessage()
+                .statusCode(HttpStatus.NO_CONTENT));
 
         citrus.send(serviceUri)
-                .fork(true)
-                .message(new HttpMessage()
-                        .method(HttpMethod.GET)
-                        .accept(MediaType.APPLICATION_XML));
+            .fork(true)
+            .message(new HttpMessage()
+                .method(HttpMethod.GET)
+                .accept(MediaType.APPLICATION_XML));
 
         citrus.receive(serviceUri)
-                .message(new HttpMessage("<employees>" +
-                            "<employee>" +
-                                "<age>20</age>" +
-                                "<name>Rajesh</name>" +
-                                "<email>rajesh@example.com</email>" +
-                            "</employee>" +
-                        "</employees>")
-                        .statusCode(HttpStatus.OK));
+            .message(new HttpMessage("<employees>" +
+                    "<employee>" +
+                        "<age>20</age>" +
+                        "<name>Rajesh</name>" +
+                        "<email>rajesh@example.com</email>" +
+                    "</employee>" +
+                "</employees>")
+                .statusCode(HttpStatus.OK));
 
         citrusFramework.run(citrus.getTestCase());
     }
