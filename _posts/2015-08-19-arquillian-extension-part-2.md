@@ -175,16 +175,16 @@ public class EmployeeMailTest {
 
         citrus.receive(mailServer)
             .payload("<mail-message xmlns=\"http://www.citrusframework.org/schema/mail/message\">" +
-                    "<from>employee-registry@example.com</from>" +
-                    "<to>rajesh@example.com</to>" +
-                    "<cc></cc>" +
-                    "<bcc></bcc>" +
-                    "<subject>Welcome new employee</subject>" +
-                    "<body>" +
-                      "<contentType>text/plain; charset=us-ascii</contentType>" +
-                      "<content>We welcome you 'Rajesh' to our company - now get to work!</content>" +
-                    "</body>" +
-                "</mail-message>")
+              "<from>employee-registry@example.com</from>" +
+              "<to>rajesh@example.com</to>" +
+              "<cc></cc>" +
+              "<bcc></bcc>" +
+              "<subject>Welcome new employee</subject>" +
+              "<body>" +
+                "<contentType>text/plain; charset=us-ascii</contentType>" +
+                "<content>We welcome you 'Rajesh' to our company - now get to work!</content>" +
+              "</body>" +
+            "</mail-message>")
             .header(CitrusMailMessageHeaders.MAIL_SUBJECT, "Welcome new employee")
             .header(CitrusMailMessageHeaders.MAIL_FROM, "employee-registry@example.com")
             .header(CitrusMailMessageHeaders.MAIL_TO, "rajesh@example.com");
