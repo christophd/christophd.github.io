@@ -69,8 +69,8 @@ author:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/christophd"
-    - label: "Stackoverflow"
-      icon: "fab fa-fw fa-github"
+    - label: "Stack Overflow"
+      icon: "fab fa-fw fa-stack-overflow"
       url: "https://stackoverflow.com/users/6012516/christoph-deppisch?tab=profile"
 
 footer:
