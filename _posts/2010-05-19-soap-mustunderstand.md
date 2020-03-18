@@ -1,6 +1,7 @@
 ---
-layout: post
-title: Handle SOAP-ENV:mustUnderstand headers
+title: "Handle SOAP-ENV:mustUnderstand headers"
+categories:
+  - Blog
 ---
 
 By setting the SOAP mustUnderstand header attribute to _"1"_, you indicate that the service provider must process the SOAP header entry. In case the service provider is not able to handle this special header a SOAP fault server error is sent back to the calling client. In this post I would like to point out an easy way to support these mustUnderstand headers when simulating SOAP WebServices with Citrus.

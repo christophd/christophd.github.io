@@ -1,7 +1,6 @@
 ---
-layout: page
-title: About
 permalink: /about/
+title: "About"
 ---
 
 My name is Christoph Deppisch and I am working as a Senior Software Consultant in Munich. In this blog I would like to share my experience with Middleware Integration projects, in particular with Apache Camel, ActiveMQ, JBoss Fuse and TIBCO. Most of the posts will be related to the Open Source project Citrus which I am developing for almost 8 years now.

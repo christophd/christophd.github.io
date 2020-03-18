@@ -1,6 +1,7 @@
 ---
-layout: post
-title: Apache Camel Integration Testing - Part 1
+title: "Apache Camel Integration Testing - Part 1"
+categories:
+  - Blog
 ---
 
 Apache Camel is a great mediation and routing framework that integrates with almost every enterprise messaging transport. In the past I have experienced Camel projects struggling with integration testing where the actual message interfaces to boundary applications are not tested properly in an automated way.

@@ -1,6 +1,7 @@
 ---
-layout: post
-title: Apache Camel Integration Testing - Part 3
+title: "Apache Camel Integration Testing - Part 3"
+categories:
+  - Blog
 ---
 
 In this post I will continue with the Apache Camel integration testing scenario that we have worked on in

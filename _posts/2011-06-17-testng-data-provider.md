@@ -1,6 +1,7 @@
 ---
-layout: post
-title: Use TestNG data providers in Citrus
+title: "Use TestNG data providers in Citrus"
+categories:
+  - Blog
 ---
 
 TestNG provides brilliant support for test parameters and data providers. With some annotation magic you are able to pass parameter values to your test method and finally to your Citrus test logic. Actually the TestNG parameters are injected to the Citrus test as normal test variables. Lets put this to the test with a simple example:

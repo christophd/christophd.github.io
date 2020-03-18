@@ -1,6 +1,7 @@
 ---
-layout: post
-title: Apache Camel Integration Testing - Part 2
+title: "Apache Camel Integration Testing - Part 2"
+categories:
+  - Blog
 ---
 
 In <a href="http://christophd.github.io/camel-testing-part-1/" title="Part 1" target="_blank">part one</a> of this blog series we have used Citrus in combination with Apache Camel for setting up

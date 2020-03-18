@@ -1,6 +1,7 @@
 ---
-layout: post
-title: Validate Excel files in Citrus
+title: "Validate Excel files in Citrus"
+categories:
+  - Blog
 ---
 
 Lately I had to deal with Excel files as REST Http service response. I came up with a pretty clever validation mechanism in Citrus that I would like to share with you. You can apply the Excel validator to your Citrus project, too. It is not very complicated as you will see in this post.

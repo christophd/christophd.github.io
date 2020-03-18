@@ -1,6 +1,7 @@
 ---
-layout: post
-title: Arquillian & Citrus in combination - Part 2
+title: "Arquillian & Citrus in combination - Part 2"
+categories:
+  - Blog
 ---
 
 Some time has passed since <a href="http://christophd.github.io/arquillian-extension-part-1/" title="Part 1" target="_blank">part one</a> of this blog post series and we have made some improvements on the Citrus Arquillian extension.

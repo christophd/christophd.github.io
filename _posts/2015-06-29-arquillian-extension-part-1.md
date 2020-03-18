@@ -1,6 +1,7 @@
 ---
-layout: post
-title: Arquillian & Citrus in combination - Part 1
+title: "Arquillian & Citrus in combination - Part 1"
+categories:
+  - Blog
 ---
 
 <a href="http://www.citrusframework.org" title="Citrus framework" target="_blank">Citrus</a> and <a href="http://arquillian.org/" title="Arquillian" target="_blank">Arquillian</a>

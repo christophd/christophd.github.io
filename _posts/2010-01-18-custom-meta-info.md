@@ -1,6 +1,7 @@
 ---
-layout: post
-title: Customize meta information
+title: "Customize meta information"
+categories:
+  - Blog
 ---
 
 Test cases in Citrus are usually provided with some meta information like the author's name or the date of creation. This post shows how to extend on this to include your very specific meta data on your own.

@@ -1,6 +1,7 @@
 ---
-layout: post
-title: Citrus and TestNG groups
+title: "Citrus and TestNG groups"
+categories:
+  - Blog
 ---
 
 TestNG groups add great flexibility to the Citrus test execution. We are able to divide all tests into several groups reaching a sophisticated seperation of concerns in our test setup. As an example I want to classify some of my functional Citrus tests as "long-running". These tests may not apply to continuous execution every time I package my project. Instead of this I want to set up a scheduled integration build to execute those long-running tests in a time schedule.
