@@ -60,24 +60,27 @@ author:
   avatar : "/assets/images/me.png"
   bio    : "Java developer, Open Source enthusiast"
   links:
-    - label: "Website"
+    - label: "Citrus Framework"
       icon: "fas fa-fw fa-link"
       url: "https://citrusframework.org"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/"
+      url: "https://twitter.com/freaky_styley"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/"
+      url: "https://github.com/christophd"
+    - label: "Stackoverflow"
+      icon: "fab fa-fw fa-github"
+      url: "https://stackoverflow.com/users/6012516/christoph-deppisch?tab=profile"
 
 footer:
   links:
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/"
+      url: "https://twitter.com/freaky_styley"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/"
+      url: "https://github.com/christophd"
 
 defaults:
   # _posts
