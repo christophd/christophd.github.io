@@ -19,7 +19,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   Java developer, Open Source enthusiast
 twitter_username: freaky_styley
 github_username: christophd
-minimal_mistakes_skin: contrast
+minimal_mistakes_skin: air
 search: true
 
 # Build settings
