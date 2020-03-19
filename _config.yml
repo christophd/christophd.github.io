@@ -19,7 +19,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   Java developer, Open Source enthusiast
 twitter_username: freaky_styley
 github_username: christophd
-minimal_mistakes_skin: default
+minimal_mistakes_skin: contrast
 search: true
 
 # Build settings
@@ -29,7 +29,7 @@ remote_theme: mmistakes/minimal-mistakes
 permalink: /:categories/:title/
 paginate: 5 # amount of posts to show
 paginate_path: /page:num/
-timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone: Europe/Berlin
 
 include:
   - _pages
@@ -59,6 +59,7 @@ author:
   name   : "Christoph Deppisch"
   avatar : "/assets/images/me.png"
   bio    : "Java developer, Open Source enthusiast"
+  location: "Sommerhausen, Germany"
   links:
     - label: "Citrus Framework"
       icon: "fas fa-fw fa-link"
@@ -105,6 +106,3 @@ defaults:
 category_archive:
   type: liquid
   path: /categories/
-tag_archive:
-  type: liquid
-  path: /tags/
