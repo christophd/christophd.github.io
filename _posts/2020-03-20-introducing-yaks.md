@@ -146,7 +146,7 @@ The test we just have run calls the sample Camel K integration over Http. It inv
 test uses some of the ready-to-use steps for handling Http communication provided by YAKS. But before we have a closer look at the predefined YAKS steps that you can use in a feature file 
 we have a closer look at what happens behind the scenes when running this test.
 
-[<img src="{{ site.baseurl }}/assets/images/yaks-architecture.png" alt="YAKS architecture"/>]({{ site.baseurl }}/)
+[<img src="{{ site.baseurl }}/assets/images/yaks-architecture.png" alt="YAKS architecture"/>]({{ site.baseurl }}/assets/images/yaks-architecture.png)
 
 The `yaks` tool will sync your test code with a Kubernetes custom resource of Kind _Test_. The resource is named `http-to-kafka` (after the file name) in the current namespace. So every time 
 you run the test the custom resource is updated and executed.
