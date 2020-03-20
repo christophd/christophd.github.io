@@ -96,18 +96,19 @@ When you run this you will be provided with the test output from the Pod that is
 ```
 $ yaks test http-to-kafka.feature
     
-[...]
+[...] 
 
- CITRUS TEST RESULTS
- 
-  org/citrusframework/yaks/http-to-kafka.feature:6 .................. SUCCESS
- 
- TOTAL:	1
- FAILED:	0 (0.0%)
- SUCCESS:	1 (100.0%)
- 
- ------------------------------------------------------------------------
- Generated test report: target/citrus-reports/citrus-test-results.html
+[INFO]
+[INFO] CITRUS TEST RESULTS
+[INFO]
+[INFO]  http-to-kafka.feature:6 .................. SUCCESS
+[INFO] 
+[INFO] TOTAL:	1
+[INFO] FAILED:	0 (0.0%)
+[INFO] SUCCESS:	1 (100.0%)
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Generated test report: target/citrus-reports/citrus-test-results.html
 
 1 Scenarios (1 passed)
 2 Steps (2 passed)
