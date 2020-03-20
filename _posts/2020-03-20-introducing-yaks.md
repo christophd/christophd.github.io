@@ -8,19 +8,18 @@ YAKS is Cloud-Native BDD testing or simply "Yet Another Kubernetes Service".
 
 # What is "YAKS"?
 
-YAKS is a test automation platform to run your tests as Cloud-Native resources. This means it runs natively on
- [Kubernetes](https://kubernetes.io/) and [OpenShift](https://www.openshift.com/) and is specifically designed 
- to verify your serverless and Microservice components.
+YAKS is an Open Source test automation platform to run your tests as Cloud-Native resources. This means it runs natively on
+[Kubernetes](https://kubernetes.io/) and [OpenShift](https://www.openshift.com/) and is specifically designed to verify your serverless and Microservice components.
   
-The tests that you write with YAKS follow the BDD (Behavior Driven Development) concepts so you can run any 
-[Gherkin](https://cucumber.io/docs/gherkin/reference/) (Given-When-Then) feature file as Pod in your cluster.
+The tests that you write with YAKS follow the BDD (Behavior Driven Development) concepts so you can run 
+[Gherkin](https://cucumber.io/docs/gherkin/reference/) (Given-When-Then) feature files as Pod in your cluster.
 
 YAKS provides a specific operator that leverages the Operator SDK to perform operations on Kubernetes resources. Each time you provide
 a test as a [custom resource](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) the operator takes care on
-preparing the JVM test runtime and executes the test as a Pod in the cluster.
+preparing a JVM test runtime and executes the test as a Pod in the cluster.
   
 The test framework also brings a set of ready-to-use [Cucumber](https://cucumber.io/) steps so you can just start writing 
-your feature files and run them. 
+your feature files and run them to verify your deployed services. 
 
 ## Why would you want to do that?
 
@@ -28,8 +27,11 @@ Why would you want to run tests as Cloud-Native resources in Kubernetes? Both Ku
 and microservices architectures. Developing those architectures is different compared to what we have done for decades before that. 
 
 Writing a serverless application for instance with [Camel K](https://camel.apache.org/projects/camel-k/) is very declarative. As a developer you write a single 
-Camel route and run this via the Camel K operator in the Kubernetes cluster. In this approach the unit testing part that we were used to in so many years 
-is more and more transformed into pure integration testing and end-to-end testing given by the nature of serverless architectures.
+Camel route and run this via the Camel K operator in the Kubernetes cluster. In this approach the unit testing part that we have been used to over so many years 
+gets more and more transformed into pure integration testing and end-to-end testing. Given by the nature of serverless architectures we rely on a given runtime infrastructure
+and it is hard to run tests outside of that infrastructure.
+
+Let us have a look ata sample Camel K integration:
 
 Sample: _Camel K integration.groovy_
 {% highlight groovy %}
@@ -45,9 +47,13 @@ from("kafka:messages")
 {% endhighlight %}
 
 We always run the Camel K integration source within the target infrastructure including messaging transports, databases and other services. It is only natural 
-to also move the verifying tests into this infrastructure in order to run the tests as part of the Kubernetes cluster. This way the tests can make use of all
-Kubernetes services including access to internal services, too. Also the tests are able to simulate 3rd party services or other microservices that are part
-of the processing logic in the Camel K route.
+to also move the verifying tests into this very same infrastructure in order to run the tests as part of the Kubernetes cluster. 
+
+This way the tests can make use of all Kubernetes services including access to internal services, too. Also the tests are able to simulate 3rd party services or other microservices that are part
+of the message processing logic in the Camel K route.
+
+In additional to all of that the BDD tests describe the given context, the events to occur and the expected outcome all in one single feature file. This declarative approach of testing
+fits best into the concept of operators and custom resources on Kubernetes that is being used in so many Cloud-Native services these days.
 
 ## How does it work? 
 
@@ -176,7 +182,7 @@ verifying the response content. It continues to more complex scenarios where the
 
 Take a look:
 
-<iframe width="560" height="315" src="" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/watch?v=fR-UgzvZkuA" frameborder="0" allowfullscreen></iframe>
 
 # What's next
 
