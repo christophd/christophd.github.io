@@ -31,7 +31,7 @@ Camel route and run this via the Camel K operator in the Kubernetes cluster. In 
 gets more and more transformed into pure integration testing and end-to-end testing. Given by the nature of serverless architectures we rely on a given runtime infrastructure
 and it is hard to run tests outside of that infrastructure.
 
-Let us have a look ata sample Camel K integration:
+Let us have a look at a sample Camel K integration:
 
 Sample: _Camel K integration.groovy_
 {% highlight groovy %}
@@ -46,19 +46,19 @@ from("kafka:messages")
   .to("http://myendpoint/messages")
 {% endhighlight %}
 
-We always run the Camel K integration source within the target infrastructure including messaging transports, databases and other services. It is only natural 
-to also move the verifying tests into this very same infrastructure in order to run the tests as part of the Kubernetes cluster. 
+While we develop this integration we always run the Camel K integration source within the target infrastructure including its messaging transports, databases and other services. It is only natural 
+to also move the verifying tests into this very same infrastructure. 
 
-This way the tests can make use of all Kubernetes services including access to internal services, too. Also the tests are able to simulate 3rd party services or other microservices that are part
-of the message processing logic in the Camel K route.
+This way the tests can make use of all Kubernetes services including access to internal services, too. Also the tests are able to simulate 3rd party services 
+(like the `http://myendpoint/messages` endpoint in the sample above) or other microservices that are part of the message processing logic in system under test.
 
-In additional to all of that the BDD tests describe the given context, the events to occur and the expected outcome all in one single feature file. This declarative approach of testing
-fits best into the concept of operators and custom resources on Kubernetes that is being used in so many Cloud-Native services these days.
+In additional to all of that the BDD tests describe the given context, the events to occur and the expected outcome all in one single feature file. This declarative testing approach
+is a perfect match to the concept of operators and custom resources on Kubernetes that is being used in so many Cloud-Native services these days.
 
 ## How does it work? 
 
 YAKS provides a Kubernetes operator and a set of CRDs (custom resources) that we need to install in the cluster. The best way to install YAKS is to use the _yaks_ CLI tools 
-that you can download on the YAKS [github release pages](https://github.com/citrusframework/yaks/releases).
+that you can download on the [github release pages](https://github.com/citrusframework/yaks/releases).
 
 Simply run:
 ```
@@ -68,7 +68,7 @@ $ yaks install
 This command prepares your Kubernetes cluster for running tests with YAKS. It will take care of installing the YAKS CRDs, setting up privileges and create the 
 operator in the current namespace.
 
-Important: in some cluster configurations, you need to be a cluster admin to install a CRD (it’s a operation that should be done only once for the entire cluster). 
+__Important:__ in some cluster configurations, you need to be a cluster admin to install a CRD (it’s a operation that should be done only once for the entire cluster). 
 The _yaks_ binary will help you troubleshoot. If you want to work on a development cluster like Minishift or Minikube, you can easily follow the dev cluster setup guide.
                                                                               
 Once the cluster is prepared and the operator installed in the current namespace we can start to write a first BDD feature:
@@ -78,7 +78,7 @@ File: _http-to-kafka.feature_
 Feature: Http To Kafka
 
   Background:
-    Given URL: https://camelk-integration.my-namespace.svc.cluster-domain.example/api/resources
+    Given URL: https://camelk-sample.namespace.domain.example/api/resources
   
   Scenario: Get a result from API
     When send GET /
@@ -96,17 +96,18 @@ When you run this you will be provided with the test output from the Pod that is
 ```
 $ yaks test http-to-kafka.feature
     
-...
-2020-03-06 15:30:53.084|INFO |main|LoggingReporter - CITRUS TEST RESULTS
-2020-03-06 15:30:53.084|INFO |main|LoggingReporter - 
-2020-03-06 15:30:53.087|INFO |main|LoggingReporter -  org/citrusframework/yaks/http-to-kafka.feature:6 .................. SUCCESS
-2020-03-06 15:30:53.087|INFO |main|LoggingReporter - 
-2020-03-06 15:30:53.087|INFO |main|LoggingReporter - TOTAL:	1
-2020-03-06 15:30:53.088|INFO |main|LoggingReporter - FAILED:	0 (0.0%)
-2020-03-06 15:30:53.088|INFO |main|LoggingReporter - SUCCESS:	1 (100.0%)
-2020-03-06 15:30:53.088|INFO |main|LoggingReporter - 
-2020-03-06 15:30:53.088|INFO |main|LoggingReporter - ------------------------------------------------------------------------
-2020-03-06 15:30:53.122|INFO |main|AbstractOutputFileReporter - Generated test report: target/citrus-reports/citrus-test-results.html
+[...]
+
+ CITRUS TEST RESULTS
+ 
+  org/citrusframework/yaks/http-to-kafka.feature:6 .................. SUCCESS
+ 
+ TOTAL:	1
+ FAILED:	0 (0.0%)
+ SUCCESS:	1 (100.0%)
+ 
+ ------------------------------------------------------------------------
+ Generated test report: target/citrus-reports/citrus-test-results.html
 
 1 Scenarios (1 passed)
 2 Steps (2 passed)
@@ -133,25 +134,25 @@ Also you can revisit the test Pod outcome with:
 $ kubectl get tests
 ```                
 
-This is an example of output you should get:
+This is an example output you should get:
 
 ```
 NAME            PHASE
 http-to-kafka   Passed
 ```
 
-The test we just have run calls the sample Camel K integration that we have seen before. It invokes a Http request on the Camel K service and verifies the _Http 200 OK_ response code. The
+The test we just have run calls the sample Camel K integration over Http. It invokes the Http request on the Camel K service and verifies the _Http 200 OK_ response code. The
 test uses some of the ready-to-use steps for handling Http communication provided by YAKS. But before we have a closer look at the predefined YAKS steps that you can use in a feature file 
 we have a closer look at what happens behind the scenes when running this test.
 
-[<img src="{{ site.baseurl }}/assets/images/yaks-architecture.jpg" alt="YAKS architecture"/>]({{ site.baseurl }}/)
+[<img src="{{ site.baseurl }}/assets/images/yaks-architecture.png" alt="YAKS architecture"/>]({{ site.baseurl }}/)
 
 The `yaks` tool will sync your test code with a Kubernetes custom resource of Kind _Test_. The resource is named `http-to-kafka` (after the file name) in the current namespace. So every time 
 you run the test the custom resource is updated and executed.
 
 The YAKS operator is the component that makes all this possible by configuring all Kubernetes resources needed for running your tests.
 
-Now lets have a look at the predefined YAKS step implementations that you can use out-of-the box.
+Now lets have a look at the predefined YAKS step implementations that you can use out of the box.
 
 # YAKS test steps
 
@@ -164,7 +165,7 @@ exchanging data over various messaging transports. Have a look at the predefined
  yaks-http          | Call Http REST endpoints and verify the response content
  yaks-swagger       | Import Swagger OpenAPI specifications and use defined operations and test data to call Http REST endpoints
  yaks-jdbc          | Connect to a database for updating data or verifying query result sets
- yaks-camel         | Create, start and stop [Apache Camel](https://camel.apache.org/) routes as part of the test. This opens access to all __200+__ Camel components that you can use in your test!
+ yaks-camel         | Create, start and stop [Apache Camel](https://camel.apache.org/) routes as part of the test. This opens access to all __200+__ Camel components for testing!
  yaks-camel-k       | Create and verify Camel K integrations in a test
 
 The list of ready-to-use steps is constantly growing and you can also write your own steps and use them in a YAKS test! Have a look at the [examples](https://github.com/citrusframework/yaks/tree/master/examples) 
@@ -182,7 +183,7 @@ verifying the response content. It continues to more complex scenarios where the
 
 Take a look:
 
-<iframe width="560" height="315" src="https://www.youtube.com/watch?v=fR-UgzvZkuA" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://youtu.be/fR-UgzvZkuA" frameborder="0" allowfullscreen></iframe>
 
 # What's next
 
