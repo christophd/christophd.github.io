@@ -183,7 +183,7 @@ verifying the response content. It continues to more complex scenarios where the
 
 Take a look:
 
-<iframe width="560" height="315" src="https://youtu.be/fR-UgzvZkuA" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/fR-UgzvZkuA" frameborder="0" allowfullscreen></iframe>
 
 # What's next
 
